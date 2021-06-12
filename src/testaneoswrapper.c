@@ -406,38 +406,6 @@ int main(int argc, char **argv) {
 
     exit(1);
 #endif
-#if 0
-    for (i=0; i<Table->nRho; i++) {
-        for (j=0; j<Table->nT; j++) {
-
-            callaneos_cgs(Table->T[j], Table->rho[i], iMat, &Table->P[i][j], &Table->u[i][j],
-                    &Table->s[i][j], &Table->cv[i][j], &dPdT, &dPdrho, &fkros, &cs,
-                    &Table->phase[i][j], &rhoL, &rhoH, &ion);
-
-#if 0
-            /* Convert specific entropy from ergs/g/K to MJ/kg/K. */
-            s *= 1e-10;
-            callaneos_cgs(T, rho, iMat, &p, &u, &s, &cv, &dPdT, &dPdrho, &fkros, &cs, &iPhase, &rhoL,
-                    &rhoH, &ion);
-#endif
-            /* Limit the pressure. */
-            if (fabs(p) < 1e-20) p = 1e-20;
-
-            /* Convert pressure from cgs to GPa. */
-            Table->P[i][j] *= 1e-10;
-
-            /* Convert specific internal energy from erg/g to MJ/kg. */
-            Table->u[i][j] *= 1e-10;
-
-            /* Convert specific entropy from ergs/g/K to MJ/kg/K. */
-            Table->s[i][j] *= 1e-10;
-
-            /* Convert specific heat capacity from erg/g/K to MJ/kg/K. */
-            Table->cv[i][j] *= 1e-10;
-        }
-    }
-#endif
-
 
     /*
      * Write the SESAME table.
